@@ -1,0 +1,209 @@
+/* Base Variables aligned with Design System */
+:root {
+  /* Default light theme */
+  --color-primary: #DC2626;
+  --color-secondary: #F87171;
+  --color-cta: #CA8A04;
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] {
+  /* Dark theme overrides */
+  --color-background: #121212;
+  --color-text: #f3f4f6;
+  
+  --glass-bg: rgba(30, 30, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism Utilities */
+.glass-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Styles per Master.md */
+.btn-primary {
+  background: var(--color-cta);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 200ms ease;
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(202, 138, 4, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Input Styles */
+.input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+/* Hover Micr-interactions */
+.hover-lift {
+  cursor: pointer;
+}
+
+.hover-lift:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+/* Neon Glow Effect */
+.glow-text {
+  text-shadow: 0 0 2px rgba(220, 38, 38, 0.2);
+}
+
+[data-theme="dark"] .glow-text {
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.4), 0 0 16px rgba(220, 38, 38, 0.2);
+}
+
+/* Hero Slideshow Specific Animations & Overrides */
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.05); /* Slight zoom start */
+  transition: opacity 1.5s ease-in-out, transform 8s linear;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1); /* slowly zooms out */
+}
+
+/* 
+  Hover logic container 
+  When the slideshow container is hovered, trigger transformations.
+*/
+#slideshow-container {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Pause the scale animation on hover, and apply requested rotation/zoom */
+#hero:hover .hero-slide.active {
+  transform: scale(1.05) rotate(2deg); /* Slightly rotates and zooms */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Show the overlay and change text strictly when hero is hovered */
+#hero:hover #hero-overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Darken strongly to focus on text */
+}
+
+/* Animated hover overlay content inside Hero */
+.hero-hover-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 25; /* Above base content */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(20px);
+}
+
+#hero:hover .hero-hover-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Allow clicking button */
+}
+
+/* Fade out default content when hovered */
+.hero-default-content {
+  transition: opacity 0.4s ease;
+}
+
+#hero:hover .hero-default-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Scroll Fade-in Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide scrollbar for a cleaner look natively */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cta); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); 
+}

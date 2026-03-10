@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cicinati Bar & Grill: A vibrant neighborhood bar & grill with great food, cold drinks, and unforgettable karaoke nights.">
+    <title>Cicinati Bar & Grill</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        secondary: 'var(--color-secondary)',
+                        cta: 'var(--color-cta)',
+                        background: 'var(--color-background)',
+                        text: 'var(--color-text)',
+
+                        // Explicit aliases for the cyberpunk/elegant theme
+                        charcoal: '#1A1A1A',
+                        'warm-gold': '#CA8A04',
+                        'neon-red': '#DC2626'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display SC"', 'serif'],
+                        body: ['Karla', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+                        'neon': '0 0 10px rgba(220, 38, 38, 0.5), 0 0 20px rgba(220, 38, 38, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-background text-text font-body transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-4 md:top-6 w-[95%] md:w-auto md:min-w-[700px] left-1/2 -translate-x-1/2 z-50 transition-all duration-300 pointer-events-none"
+        id="navbar">
+        <div
+            class="glass-nav px-6 py-3 rounded-full flex justify-between items-center shadow-lg border border-gray-200 dark:border-white/10 gap-8 pointer-events-auto">
+            <a href="#"
+                class="text-xl md:text-2xl font-heading font-bold text-primary tracking-wider glow-text whitespace-nowrap">Cicinati
+                Bar</a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex relative items-center gap-2 font-medium" id="desktop-nav">
+                <!-- Sliding Hover Pill -->
+                <div id="nav-pill"
+                    class="absolute h-9 bg-black/10 dark:bg-white/10 rounded-full transition-all duration-300 ease-out opacity-0 pointer-events-none">
+                </div>
+
+                <a href="#hero"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Home</a>
+                <a href="#menu"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Menu</a>
+                <a href="#events"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Events</a>
+                <a href="#gallery"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Gallery</a>
+                <a href="#about"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">About</a>
+                <a href="#contact"
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Contact</a>
+
+                <button id="theme-toggle"
+                    class="relative z-10 ml-2 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <i class="ph ph-moon text-xl dark:hidden"></i>
+                    <i class="ph ph-sun text-xl hidden dark:block"></i>
+                </button>
+            </nav>
+
+            <a href="#contact"
+                class="hidden md:flex bg-cta text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-cta/90 transition-all items-center gap-2">
+                Reserve
+                <i class="ph ph-arrow-right"></i>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary" aria-label="Menu">
+                <i class="ph ph-list text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden absolute top-24 left-4 right-4 glass-card p-6 flex flex-col space-y-4 rounded-2xl md:hidden pointer-events-auto origin-top transition-transform transform scale-y-0">
+            <a href="#hero" class="text-lg font-medium hover:text-cta transition-colors">Home</a>
+            <a href="#menu" class="text-lg font-medium hover:text-cta transition-colors">Menu</a>
+            <a href="#events" class="text-lg font-medium hover:text-cta transition-colors">Events</a>
+            <a href="#gallery" class="text-lg font-medium hover:text-cta transition-colors">Gallery</a>
+            <a href="#about" class="text-lg font-medium hover:text-cta transition-colors">About Us</a>
+            <a href="#contact" class="text-lg font-medium hover:text-cta transition-colors">Contact</a>
+
+            <hr class="border-gray-200 dark:border-gray-800">
+
+            <button id="mobile-theme-toggle"
+                class="flex items-center space-x-2 text-lg font-medium hover:text-cta transition-colors">
+                <i class="ph ph-moon dark:hidden"></i>
+                <i class="ph ph-sun hidden dark:block"></i>
+                <span class="dark:hidden">Dark Mode</span>
+                <span class="hidden dark:block">Light Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Slideshow Section -->
+        <section id="hero" class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+            <!-- Slides Container -->
+            <div id="slideshow" class="absolute inset-0 w-full h-full">
+                <!-- Slides will be injected by JS -->
+            </div>
+
+            <!-- Dark Overlay for Readability -->
+            <div class="absolute inset-0 bg-black/40 z-10 transition-opacity duration-300" id="hero-overlay"></div>
+
+            <!-- Content -->
+            <div class="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
+                <!-- Default State -->
+                <div class="hero-default-content flex flex-col items-center">
+                    <h1
+                        class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 drop-shadow-lg tracking-wide glow-text">
+                        Cicinati Bar & Grill</h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light drop-shadow">A vibrant neighborhood bar
+                        & grill with unforgettable karaoke nights.</p>
+                </div>
+
+                <!-- Hover State Overlay -->
+                <div class="hero-hover-content">
+                    <h2 class="text-5xl md:text-6xl font-heading font-bold text-white mb-4 drop-shadow-xl glow-text">
+                        Karaoke Night</h2>
+                    <p class="text-xl text-cta font-bold tracking-widest uppercase mb-6 drop-shadow-lg">Every Friday 8PM
+                    </p>
+                    <p class="text-2xl md:text-3xl text-gray-100 font-light mb-10 drop-shadow-md">Sing, Drink, Enjoy!
+                    </p>
+                </div>
+
+                <a href="#contact"
+                    class="btn-primary inline-flex items-center space-x-2 text-lg px-8 py-4 z-30 relative mt-4">
+                    <span>Reserve a Table</span>
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-24 px-6 max-w-7xl mx-auto relative reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Our Menu</h2>
+                <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover our crafted selection of
+                    grilled specialties, signature snacks, and handcrafted cocktails.</p>
+            </div>
+
+            <!-- Menu Category Filters (Optional UX enhancement) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button
+                    class="menu-filter active px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors">All</button>
+                <button
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Burgers</button>
+                <button
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Grilled
+                    Meat</button>
+                <button
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Cocktails</button>
+                <button
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Beers</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                <!-- Menu Items injected by JS -->
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-24 px-6 relative overflow-hidden bg-black/5 dark:bg-white/5 reveal">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Weekly Events</h2>
+                    <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Karaoke -->
+                    <div class="glass-card hover-lift overflow-hidden group">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516280440503-6c7398189c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Karaoke Stage"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Every Friday</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-heading font-bold mb-2">Karaoke Night</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Sing your heart out with friends! Drink
+                                specials all night for performers.</p>
+                            <div class="flex items-center text-sm font-medium text-primary">
+                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
+                                <span>8:00 PM - 1:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Music -->
+                    <div class="glass-card hover-lift overflow-hidden group mt-0 md:mt-8">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Live Band"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Every Saturday</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-heading font-bold mb-2">Live Music</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Enjoy local bands and acoustic sets while
+                                sipping on craft cocktails.</p>
+                            <div class="flex items-center text-sm font-medium text-primary">
+                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
+                                <span>9:00 PM - Midnight</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Happy Hour -->
+                    <div class="glass-card hover-lift overflow-hidden group">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Cocktails"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Mon - Thu</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-heading font-bold mb-2">Happy Hour</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Half-price appetizers and $5 signature
+                                drafts and well drinks.</p>
+                            <div class="flex items-center text-sm font-medium text-primary">
+                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
+                                <span>4:00 PM - 7:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Gallery</h2>
+                <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="gallery-grid">
+                <!-- Gallery images injected by JS -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6 relative reveal">
+            <div class="max-w-4xl mx-auto text-center">
+                <i class="ph-fill ph-cheers text-6xl text-cta mb-6"></i>
+                <h2 class="text-4xl font-heading font-bold text-primary mb-8 glow-text">Our Story</h2>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+                    "A vibrant neighborhood bar & grill where great food, cold drinks, and unforgettable karaoke nights
+                    bring people together."
+                </p>
+                <div class="mt-12 flex justify-center space-x-8">
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-primary">10+</span>
+                        <span class="text-sm font-medium tracking-wide text-gray-500 uppercase">Years Pouring</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-primary">500+</span>
+                        <span class="text-sm font-medium tracking-wide text-gray-500 uppercase">Karaoke Stars</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6 bg-black/5 dark:bg-white/5 reveal">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Visit Us</h2>
+                    <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Info & Form -->
+                    <div class="space-y-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="glass-card p-6 flex flex-col items-center text-center">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                                    <i class="ph-fill ph-map-pin text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">123 Cicinati Blvd<br>Downtown District, NY
+                                    10001</p>
+                            </div>
+
+                            <div class="glass-card p-6 flex flex-col items-center text-center">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                                    <i class="ph-fill ph-phone text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2">Contact</h4>
+                                <p class="text-gray-600 dark:text-gray-400">(555) 123-4567<br>hello@cicinatibar.com</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-8">
+                            <h3 class="text-2xl font-heading font-bold mb-6">Reserve a Table</h3>
+                            <form id="reservation-form" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium mb-1">Name</label>
+                                        <input type="text" id="name" required
+                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium mb-1">Phone</label>
+                                        <input type="tel" id="phone" required
+                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700">
+                                    </div>
+                                    <div>
+                                        <label for="date" class="block text-sm font-medium mb-1">Date</label>
+                                        <input type="date" id="date" required
+                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700 [color-scheme:light] dark:[color-scheme:dark]">
+                                    </div>
+                                    <div>
+                                        <label for="guests" class="block text-sm font-medium mb-1">Guests</label>
+                                        <select id="guests"
+                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700 dark:bg-charcoal">
+                                            <option value="1">1 Person</option>
+                                            <option value="2" selected>2 People</option>
+                                            <option value="3">3 People</option>
+                                            <option value="4">4 People</option>
+                                            <option value="5+">5+ People</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium mb-1">Special Requests</label>
+                                    <textarea id="message" rows="3"
+                                        class="w-full input bg-transparent border-gray-300 dark:border-gray-700"></textarea>
+                                </div>
+                                <button type="submit" class="w-full btn-primary mt-4">Book Reservation</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Map (Placeholder) -->
+                    <div class="h-full min-h-[400px] rounded-2xl overflow-hidden glass-card glass-border p-2">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.2528000654!2d-74.14448744005233!3d40.697631233324634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1709140000000!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="rounded-xl filter dark:invert dark:hue-rotate-180 dark:contrast-75"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-heading font-bold text-primary tracking-wider glow-text mb-6">Cicinati Bar
+                        & Grill</h3>
+                    <p class="text-gray-400 max-w-sm">Every night is a good night when there's great food, cold drinks,
+                        and a microphone.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 font-medium text-gray-400">
+                        <li><a href="#menu" class="hover:text-cta transition-colors">Menu</a></li>
+                        <li><a href="#events" class="hover:text-cta transition-colors">Events</a></li>
+                        <li><a href="#about" class="hover:text-cta transition-colors">Our Story</a></li>
+                        <li><a href="#contact" class="hover:text-cta transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
+                            aria-label="Instagram">
+                            <i class="ph-fill ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
+                            aria-label="Facebook">
+                            <i class="ph-fill ph-facebook-logo text-xl"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
+                            aria-label="TikTok">
+                            <i class="ph-fill ph-tiktok-logo text-xl"></i>
+                        </a>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-bold text-sm text-gray-400 mb-2 uppercase tracking-wider">Opening Hours</h4>
+                        <p class="text-gray-400">Mon - Thu: 4PM - 12AM<br>Fri - Sat: 4PM - 2AM<br>Sun: 2PM - 10PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Cicinati Bar & Grill. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Mouse Cursor Effect -->
+    <div id="custom-cursor"
+        class="fixed top-0 left-0 w-3 h-3 bg-cta dark:bg-primary rounded-full pointer-events-none z-[9999] opacity-0 transition-[transform,opacity] duration-150 ease-out shadow-neon hidden md:block"
+        style="transform: translate(-50%, -50%);"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
