@@ -265,11 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. Gallery Data & Rendering ---
     const galleryImages = [
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1516280440503-6c7398189c44?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1514933651103-005eab06c04d?auto=format&fit=crop&w=600&q=80", // Neon sign / cocktails
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80", // Bar poured drinks
         "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=600&q=80", // Grilling
-        "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?auto=format&fit=crop&w=600&q=80", // Party
-        "https://images.unsplash.com/photo-1575037614876-c3f2b604b08f?auto=format&fit=crop&w=600&q=80", // Drinks
+        "https://images.unsplash.com/photo-1516280440503-6c7398189c44?auto=format&fit=crop&w=600&q=80", // Karaoke crowd
+        "https://images.unsplash.com/photo-1575037614876-c3f2b604b08f?auto=format&fit=crop&w=600&q=80", // Mixed Drinks
         "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80", // Food plate
         "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80", // Bar interior lights
         "https://images.unsplash.com/photo-1572116469696-ed7f6add23fe?auto=format&fit=crop&w=600&q=80"  // Cocktail details
@@ -278,10 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.getElementById('gallery-grid');
     galleryImages.forEach(src => {
         const div = document.createElement('div');
-        div.className = "aspect-square overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 relative cursor-pointer group";
+        // Removed overflow-hidden to allow growth, added hover:z-10 so it's on top when scaling
+        div.className = "aspect-square rounded-xl bg-gray-200 dark:bg-gray-800 relative cursor-pointer hover:z-10 transition-transform duration-300 ease-in-out transform hover:scale-125 hover:shadow-2xl";
         div.innerHTML = `
-            <img src="${src}" loading="lazy" alt="Gallery Image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300"></div>
+            <img src="${src}" loading="lazy" alt="Gallery Image" class="w-full h-full object-cover rounded-xl transition-all duration-300">
+            <div class="absolute inset-0 bg-primary/0 hover:bg-primary/20 transition-colors duration-300 pointer-events-none rounded-xl"></div>
         `;
         galleryGrid.appendChild(div);
     });
