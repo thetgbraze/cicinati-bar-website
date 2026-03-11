@@ -52,6 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Close mobile menu when clicking outside of it
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.classList.contains('hidden') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileBtn.contains(e.target)) {
+
+            mobileMenu.classList.remove('scale-y-100');
+            mobileMenu.classList.add('scale-y-0');
+            // Hide it immediately for a snappier feel as requested
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
     // --- 2.5 Sliding Pill Navigation Hover Effect ---
     const desktopNav = document.getElementById('desktop-nav');
     const navPill = document.getElementById('nav-pill');
@@ -154,6 +167,27 @@ document.addEventListener('DOMContentLoaded', () => {
         slideElements[currentSlide].classList.add('active');
     }
 
+    function prevSlide() {
+        slideElements[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        slideElements[currentSlide].classList.add('active');
+    }
+
+    // Controls
+    const btnNext = document.getElementById('slide-next');
+    const btnPrev = document.getElementById('slide-prev');
+
+    if (btnNext && btnPrev) {
+        btnNext.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextSlide();
+        });
+        btnPrev.addEventListener('click', (e) => {
+            e.preventDefault();
+            prevSlide();
+        });
+    }
+
     // Advance automatically every 5 seconds
     function startSlideshow() {
         slideInterval = setInterval(nextSlide, 5000);
@@ -166,8 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pause on hover
     const heroSection = document.getElementById('hero');
-    heroSection.addEventListener('mouseenter', stopSlideshow);
-    heroSection.addEventListener('mouseleave', startSlideshow);
+    if (heroSection) {
+        heroSection.addEventListener('mouseenter', stopSlideshow);
+        heroSection.addEventListener('mouseleave', startSlideshow);
+    }
 
 
     // --- 4. Menu Data & Rendering ---

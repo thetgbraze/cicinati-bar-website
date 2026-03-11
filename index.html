@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Cicinati Bar & Grill: A vibrant neighborhood bar & grill with great food, cold drinks, and unforgettable karaoke nights.">
-    <title>Cicinati Bar & Grill</title>
+        content="Cincinnati Bar & Grill: A vibrant neighborhood bar & grill with great food, cold drinks, and unforgettable karaoke nights.">
+    <title>Cincinnati Bar & Grill</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
         <div
             class="glass-nav px-6 py-3 rounded-full flex justify-between items-center shadow-lg border border-gray-200 dark:border-white/10 gap-8 pointer-events-auto">
             <a href="#"
-                class="text-xl md:text-2xl font-heading font-bold text-primary tracking-wider glow-text whitespace-nowrap">Cicinati
+                class="text-xl md:text-2xl font-heading font-bold text-primary tracking-wider glow-text whitespace-nowrap">Cincinnati
                 Bar</a>
 
             <!-- Desktop Menu -->
@@ -129,13 +129,25 @@
     </header>
 
     <main>
-        <!-- Hero Slideshow Section -->
+        <!-- Hero Section & Slideshow -->
         <section id="hero"
-            class="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-black">
+            class="relative w-full h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden bg-black group max-w-[1600px] mx-auto rounded-b-3xl mt-24">
             <!-- Slides Container -->
             <div id="slideshow" class="absolute inset-0 w-full h-full">
                 <!-- Slides will be injected by JS -->
             </div>
+
+            <!-- Slideshow Controls (Hidden by default, show on group hover) -->
+            <button id="slide-prev"
+                class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 hover:scale-110 active:scale-95"
+                aria-label="Previous Slide">
+                <i class="ph-bold ph-caret-left text-2xl"></i>
+            </button>
+            <button id="slide-next"
+                class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 hover:scale-110 active:scale-95"
+                aria-label="Next Slide">
+                <i class="ph-bold ph-caret-right text-2xl"></i>
+            </button>
 
             <!-- Dark Overlay for Readability -->
             <div class="absolute inset-0 bg-black/40 z-10 transition-opacity duration-300" id="hero-overlay"></div>
@@ -146,7 +158,7 @@
                 <div class="hero-default-content flex flex-col items-center">
                     <h1
                         class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 drop-shadow-lg tracking-wide glow-text">
-                        Cicinati Bar & Grill</h1>
+                        Cincinnati Bar & Grill</h1>
                     <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light drop-shadow">A vibrant neighborhood bar
                         & grill with unforgettable karaoke nights.</p>
                 </div>
@@ -329,7 +341,7 @@
                                     <i class="ph-fill ph-map-pin text-2xl"></i>
                                 </div>
                                 <h4 class="font-bold text-lg mb-2">Location</h4>
-                                <p class="text-gray-600 dark:text-gray-400">123 Cicinati Blvd<br>Downtown District, NY
+                                <p class="text-gray-600 dark:text-gray-400">123 Cincinnati Blvd<br>Downtown District, NY
                                     10001</p>
                             </div>
 
@@ -339,7 +351,8 @@
                                     <i class="ph-fill ph-phone text-2xl"></i>
                                 </div>
                                 <h4 class="font-bold text-lg mb-2">Contact</h4>
-                                <p class="text-gray-600 dark:text-gray-400">(555) 123-4567<br>hello@cicinatibar.com</p>
+                                <p class="text-gray-600 dark:text-gray-400">(555) 123-4567<br>hello@cincinnatibar.com
+                                </p>
                             </div>
                         </div>
 
@@ -402,7 +415,8 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <h3 class="text-2xl font-heading font-bold text-primary tracking-wider glow-text mb-6">Cicinati Bar
+                    <h3 class="text-2xl font-heading font-bold text-primary tracking-wider glow-text mb-6">Cincinnati
+                        Bar
                         & Grill</h3>
                     <p class="text-gray-400 max-w-sm">Every night is a good night when there's great food, cold drinks,
                         and a microphone.</p>
@@ -447,7 +461,7 @@
 
             <div
                 class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; 2026 Cicinati Bar & Grill. All rights reserved.</p>
+                <p>&copy; 2026 Cincinnati Bar & Grill. All rights reserved. Made by braze,inc 2026</p>
                 <div class="mt-4 md:mt-0 space-x-4">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
