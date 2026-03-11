@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = "glass-card hover-lift overflow-hidden group flex flex-col h-full";
             card.innerHTML = `
-                <div class="h-48 overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
+                <div class="aspect-video w-full overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
                     <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
@@ -269,15 +269,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Sticky Header behavior ---
     const navbar = document.getElementById('navbar');
+    let lastScrollY = window.scrollY;
+    let hideTimer = null;
+
     window.addEventListener('scroll', () => {
-        // Adjust nav appearance based on scroll
-        if (window.scrollY > 50) {
-            navbar.style.transform = "translateY(-10px)"; // small push
+        const currentScrollY = window.scrollY;
+
+        // Base appearance
+        if (currentScrollY > 50) {
             navbar.querySelector('.glass-nav').classList.add('shadow-xl');
         } else {
-            navbar.style.transform = "translateY(0)";
             navbar.querySelector('.glass-nav').classList.remove('shadow-xl');
         }
+
+        // Hide/Show Direction Logic
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down
+            navbar.style.transform = "translate(-50%, -150%)"; // Hide off top edge safely
+            navbar.style.opacity = "0";
+        } else if (currentScrollY < lastScrollY) {
+            // Scrolling up
+            navbar.style.transform = currentScrollY > 50 ? "translate(-50%, -10px)" : "translate(-50%, 0)";
+            navbar.style.opacity = "1";
+        }
+
+        lastScrollY = currentScrollY;
     });
 
     // --- 8. Prevent Form Default Submission ---
