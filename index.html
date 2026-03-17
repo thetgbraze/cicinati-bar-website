@@ -31,8 +31,6 @@
                         cta: 'var(--color-cta)',
                         background: 'var(--color-background)',
                         text: 'var(--color-text)',
-
-                        // Explicit aliases for the cyberpunk/elegant theme
                         charcoal: '#1A1A1A',
                         'warm-gold': '#CA8A04',
                         'neon-red': '#DC2626'
@@ -42,7 +40,7 @@
                         body: ['Karla', 'sans-serif'],
                     },
                     boxShadow: {
-                        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.12)',
                         'neon': '0 0 10px rgba(220, 38, 38, 0.5), 0 0 20px rgba(220, 38, 38, 0.3)',
                     }
                 }
@@ -58,36 +56,39 @@
 
     <!-- Navigation -->
     <header
-        class="fixed top-4 md:top-6 w-[95%] md:w-auto md:min-w-[700px] left-1/2 -translate-x-1/2 z-50 transition-all duration-300 pointer-events-none"
+        class="fixed top-4 md:top-6 w-[95%] md:w-auto md:min-w-[720px] left-1/2 -translate-x-1/2 z-50 transition-all duration-300 pointer-events-none"
         id="navbar">
         <div
-            class="glass-nav px-6 py-3 rounded-full flex justify-between items-center shadow-lg border border-gray-200 dark:border-white/10 gap-8 pointer-events-auto">
+            class="glass-nav px-5 py-3 rounded-full flex justify-between items-center shadow-lg border border-gray-200 dark:border-white/10 gap-6 pointer-events-auto">
+            <!-- Logo -->
             <a href="#"
-                class="text-xl md:text-2xl font-heading font-bold text-primary tracking-wider glow-text whitespace-nowrap">Cincinnati
-                Bar</a>
+                class="font-heading font-bold text-primary tracking-wider glow-text whitespace-nowrap leading-tight"
+                style="font-size:clamp(0.95rem, 2.5vw, 1.2rem)">
+                Cincinnati Bar &amp; Grill
+            </a>
 
             <!-- Desktop Menu -->
-            <nav class="hidden md:flex relative items-center gap-2 font-medium" id="desktop-nav">
+            <nav class="hidden md:flex relative items-center gap-1 font-medium" id="desktop-nav">
                 <!-- Sliding Hover Pill -->
                 <div id="nav-pill"
                     class="absolute h-9 bg-black/10 dark:bg-white/10 rounded-full transition-all duration-300 ease-out opacity-0 pointer-events-none">
                 </div>
 
                 <a href="#hero"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Home</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">Home</a>
                 <a href="#events"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Events</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">Events</a>
                 <a href="#menu"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Menu</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">Menu</a>
                 <a href="#gallery"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Gallery</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">Gallery</a>
                 <a href="#about"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">About</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">About</a>
                 <a href="#contact"
-                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10">Contact</a>
+                    class="nav-link relative px-4 py-2 hover:text-black dark:hover:text-white transition-colors z-10 rounded-full">Contact</a>
 
                 <button id="theme-toggle"
-                    class="relative z-10 ml-2 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                    class="relative z-10 ml-1 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors cursor-pointer"
                     aria-label="Toggle Dark Mode">
                     <i class="ph ph-moon text-xl dark:hidden"></i>
                     <i class="ph ph-sun text-xl hidden dark:block"></i>
@@ -95,98 +96,134 @@
             </nav>
 
             <a href="#contact"
-                class="hidden md:flex bg-cta text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-cta/90 transition-all items-center gap-2">
+                class="hidden md:flex bg-cta text-white px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-all items-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
+                style="transition: opacity 200ms, box-shadow 200ms">
                 Reserve
                 <i class="ph ph-arrow-right"></i>
             </a>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary" aria-label="Menu">
-                <i class="ph ph-list text-2xl"></i>
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary rounded-full hover:bg-primary/10 transition-colors cursor-pointer" aria-label="Open Menu" aria-expanded="false">
+                <i class="ph ph-list text-2xl" id="mobile-menu-icon"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
-            class="hidden absolute top-24 left-4 right-4 glass-card p-6 flex flex-col space-y-4 rounded-2xl md:hidden pointer-events-auto origin-top transition-transform transform scale-y-0">
-            <a href="#hero" class="text-lg font-medium hover:text-cta transition-colors">Home</a>
-            <a href="#events" class="text-lg font-medium hover:text-cta transition-colors">Events</a>
-            <a href="#menu" class="text-lg font-medium hover:text-cta transition-colors">Menu</a>
-            <a href="#gallery" class="text-lg font-medium hover:text-cta transition-colors">Gallery</a>
-            <a href="#about" class="text-lg font-medium hover:text-cta transition-colors">About Us</a>
-            <a href="#contact" class="text-lg font-medium hover:text-cta transition-colors">Contact</a>
+            class="menu-closed absolute top-20 left-2 right-2 glass-card p-6 flex flex-col space-y-4 md:hidden pointer-events-auto origin-top opacity-0"
+            style="transform: scaleY(0);">
+            <a href="#hero" class="text-lg font-medium hover:text-cta transition-colors py-1">Home</a>
+            <a href="#events" class="text-lg font-medium hover:text-cta transition-colors py-1">Events</a>
+            <a href="#menu" class="text-lg font-medium hover:text-cta transition-colors py-1">Menu</a>
+            <a href="#gallery" class="text-lg font-medium hover:text-cta transition-colors py-1">Gallery</a>
+            <a href="#about" class="text-lg font-medium hover:text-cta transition-colors py-1">About Us</a>
+            <a href="#contact" class="text-lg font-medium hover:text-cta transition-colors py-1">Contact</a>
 
             <hr class="border-gray-200 dark:border-gray-800">
 
             <button id="mobile-theme-toggle"
-                class="flex items-center space-x-2 text-lg font-medium hover:text-cta transition-colors">
+                class="flex items-center space-x-2 text-lg font-medium hover:text-cta transition-colors cursor-pointer w-full">
                 <i class="ph ph-moon dark:hidden"></i>
                 <i class="ph ph-sun hidden dark:block"></i>
-                <span class="dark:hidden">Dark Mode</span>
-                <span class="hidden dark:block">Light Mode</span>
+                <span class="dark:hidden">Switch to Dark Mode</span>
+                <span class="hidden dark:block">Switch to Light Mode</span>
             </button>
+
+            <a href="#contact" class="btn-primary text-center mt-2">Reserve a Table</a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section & Slideshow -->
+        <!-- ── Hero Section & Slideshow ─────────────────────── -->
         <section id="hero"
             class="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-black group">
             <!-- Slides Container -->
-            <div id="slideshow" class="absolute inset-0 w-full h-full">
-                <!-- Slides will be injected by JS -->
-            </div>
+            <div id="slideshow" class="absolute inset-0 w-full h-full"></div>
 
-            <!-- Slideshow Controls (Hidden by default, show on group hover) -->
+            <!-- Slideshow Controls -->
             <button id="slide-prev"
-                class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 hover:scale-110 active:scale-95"
+                class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 cursor-pointer"
                 aria-label="Previous Slide">
                 <i class="ph-bold ph-caret-left text-2xl"></i>
             </button>
             <button id="slide-next"
-                class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 hover:scale-110 active:scale-95"
+                class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-nav border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 hover:bg-white/20 cursor-pointer"
                 aria-label="Next Slide">
                 <i class="ph-bold ph-caret-right text-2xl"></i>
             </button>
 
-            <!-- Dark Overlay for Readability -->
-            <div class="absolute inset-0 bg-black/40 z-10 transition-opacity duration-300" id="hero-overlay"></div>
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/40 z-10 transition-colors duration-500 pointer-events-none"
+                id="hero-overlay"></div>
 
-            <!-- Content -->
-            <div class="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
-                <!-- Default State -->
-                <div class="hero-default-content flex flex-col items-center">
+            <!-- Hero Content — fills entire hero height, layers default vs hover -->
+            <div class="absolute inset-0 z-20">
+                <!-- Default State: always visible, fades out on hover -->
+                <div class="hero-default-content absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                    <span class="section-label mb-3">
+                        <i class="ph ph-star text-cta"></i>
+                        Est. 2014 &nbsp;·&nbsp; Downtown Cincinnati
+                    </span>
                     <h1
-                        class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 drop-shadow-lg tracking-wide glow-text">
-                        Cincinnati Bar & Grill</h1>
-                    <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light drop-shadow">A vibrant neighborhood bar
-                        & grill with unforgettable karaoke nights.</p>
+                        class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 drop-shadow-lg tracking-wide glow-text leading-tight max-w-4xl">
+                        Cincinnati<br>Bar &amp; Grill
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light drop-shadow max-w-xl">A vibrant
+                        neighborhood bar &amp; grill with unforgettable karaoke nights.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="btn-primary text-lg px-8 py-4">
+                            <span>Reserve a Table</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </a>
+                        <a href="#events"
+                            class="btn-secondary text-lg px-8 py-4 border-white/50 text-white hover:bg-white hover:text-gray-900">
+                            <span>See Events</span>
+                            <i class="ph ph-calendar-blank"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Hover State Overlay -->
+                <!-- Hover State: hidden by default, fades in on hero hover -->
                 <div class="hero-hover-content">
+                    <span class="section-label mb-4">
+                        <i class="ph ph-microphone text-cta"></i>
+                        Featured Event
+                    </span>
                     <h2 class="text-5xl md:text-6xl font-heading font-bold text-white mb-4 drop-shadow-xl glow-text">
                         Karaoke Night</h2>
-                    <p class="text-xl text-cta font-bold tracking-widest uppercase mb-6 drop-shadow-lg">Every Friday 8PM
-                    </p>
-                    <p class="text-2xl md:text-3xl text-gray-100 font-light mb-10 drop-shadow-md">Sing, Drink, Enjoy!
-                    </p>
+                    <p class="text-xl text-cta font-bold tracking-widest uppercase mb-5 drop-shadow-lg">Every Friday 8PM</p>
+                    <p class="text-2xl md:text-3xl text-gray-100 font-light mb-10 drop-shadow-md">Sing, Drink, Enjoy!</p>
+                    <a href="#contact" class="btn-primary text-lg px-8 py-4">
+                        <span>Book Your Spot</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
                 </div>
+            </div>
 
-                <a href="#contact"
-                    class="btn-primary inline-flex items-center space-x-2 text-lg px-8 py-4 z-30 relative mt-4">
-                    <span>Reserve a Table</span>
-                    <i class="ph ph-arrow-right"></i>
-                </a>
+            <!-- Slide dots -->
+            <div id="slide-dots" class="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 text-white/60">
+                <span class="text-xs tracking-widest uppercase font-medium">Scroll</span>
+                <div class="scroll-indicator">
+                    <i class="ph ph-caret-down text-xl text-cta"></i>
+                </div>
             </div>
         </section>
 
-        <!-- Events Section -->
+        <!-- ── Events Section ──────────────────────────────── -->
         <section id="events" class="py-24 px-6 relative overflow-hidden bg-black/5 dark:bg-white/5 reveal">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Weekly Events</h2>
-                    <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                    <span class="section-label justify-center">
+                        <i class="ph ph-calendar-star"></i>
+                        What's On
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary glow-text">Weekly Events</h2>
+                    <div class="accent-line"></div>
+                    <p class="mt-5 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">Something happening every night of the week — come find your vibe.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -194,42 +231,44 @@
                     <div class="glass-card hover-lift overflow-hidden group">
                         <div class="aspect-video w-full bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1516280440503-6c7398189c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Karaoke Stage"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white">
-                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Every Friday</span>
+                                alt="Karaoke Stage at Cincinnati Bar & Grill"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="event-badge">Every Friday</span>
                             </div>
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-heading font-bold mb-2">Karaoke Night</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Sing your heart out with friends! Drink
-                                specials all night for performers.</p>
-                            <div class="flex items-center text-sm font-medium text-primary">
-                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
-                                <span>8:00 PM - 1:00 AM</span>
+                            <p class="text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">Sing your heart out with
+                                friends! Drink specials all night for performers.</p>
+                            <div class="flex items-center text-sm font-semibold text-cta gap-2">
+                                <i class="ph-fill ph-clock text-lg"></i>
+                                <span>8:00 PM – 1:00 AM</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Live Music -->
-                    <div class="glass-card hover-lift overflow-hidden group mt-0 md:mt-8">
+                    <!-- Live Music (featured / offset) -->
+                    <div class="glass-card hover-lift overflow-hidden group md:mt-8">
                         <div class="aspect-video w-full bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Live Band"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white">
-                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Every Saturday</span>
+                                alt="Live Band performing"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="event-badge">Every Saturday</span>
                             </div>
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-heading font-bold mb-2">Live Music</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Enjoy local bands and acoustic sets while
-                                sipping on craft cocktails.</p>
-                            <div class="flex items-center text-sm font-medium text-primary">
-                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
-                                <span>9:00 PM - Midnight</span>
+                            <p class="text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">Enjoy local bands and
+                                acoustic sets while sipping on craft cocktails.</p>
+                            <div class="flex items-center text-sm font-semibold text-cta gap-2">
+                                <i class="ph-fill ph-clock text-lg"></i>
+                                <span>9:00 PM – Midnight</span>
                             </div>
                         </div>
                     </div>
@@ -238,20 +277,21 @@
                     <div class="glass-card hover-lift overflow-hidden group">
                         <div class="aspect-video w-full bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Cocktails"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 text-white">
-                                <span class="text-cta font-bold tracking-wider text-sm uppercase">Mon - Thu</span>
+                                alt="Happy hour cocktails"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="event-badge">Mon – Thu</span>
                             </div>
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-heading font-bold mb-2">Happy Hour</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">Half-price appetizers and $5 signature
-                                drafts and well drinks.</p>
-                            <div class="flex items-center text-sm font-medium text-primary">
-                                <i class="ph-fill ph-clock mr-2 text-lg"></i>
-                                <span>4:00 PM - 7:00 PM</span>
+                            <p class="text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">Half-price appetizers and
+                                $5 signature drafts & well drinks.</p>
+                            <div class="flex items-center text-sm font-semibold text-cta gap-2">
+                                <i class="ph-fill ph-clock text-lg"></i>
+                                <span>4:00 PM – 7:00 PM</span>
                             </div>
                         </div>
                     </div>
@@ -259,28 +299,39 @@
             </div>
         </section>
 
-        <!-- Menu Section -->
+        <!-- ── Menu Section ────────────────────────────────── -->
         <section id="menu" class="py-24 px-6 max-w-7xl mx-auto relative reveal">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Our Menu</h2>
-                <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
-                <p class="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover our crafted selection of
-                    grilled specialties, signature snacks, and handcrafted cocktails.</p>
+                <span class="section-label justify-center">
+                    <i class="ph ph-fork-knife"></i>
+                    Eat &amp; Drink
+                </span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary glow-text">Our Menu</h2>
+                <div class="accent-line"></div>
+                <p class="mt-5 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Crafted selections of grilled
+                    specialties, signature snacks, and handcrafted cocktails.</p>
             </div>
 
-            <!-- Menu Category Filters (Optional UX enhancement) -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <!-- Menu Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
                 <button
-                    class="menu-filter active px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors">All</button>
+                    class="menu-filter active px-6 py-2 rounded-full border border-primary text-white bg-primary transition-all"
+                    data-category="All">All</button>
                 <button
-                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Burgers</button>
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-all"
+                    data-category="Burgers">Burgers</button>
                 <button
-                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Grilled
-                    Meat</button>
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-all"
+                    data-category="Grilled Meat">Grilled Meat</button>
                 <button
-                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Cocktails</button>
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-all"
+                    data-category="Cocktails">Cocktails</button>
                 <button
-                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-colors">Beers</button>
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-all"
+                    data-category="Beers">Beers</button>
+                <button
+                    class="menu-filter px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:border-primary transition-all"
+                    data-category="Snacks">Snacks</button>
             </div>
 
             <!-- Menu Grid -->
@@ -289,11 +340,15 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- ── Gallery Section ─────────────────────────────── -->
         <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Gallery</h2>
-                <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                <span class="section-label justify-center">
+                    <i class="ph ph-images"></i>
+                    The Atmosphere
+                </span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary glow-text">Gallery</h2>
+                <div class="accent-line"></div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="gallery-grid">
@@ -301,84 +356,117 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ── About Section ──────────────────────────────── -->
         <section id="about" class="py-24 px-6 relative reveal">
-            <div class="max-w-4xl mx-auto text-center">
-                <i class="ph-fill ph-cheers text-6xl text-cta mb-6"></i>
-                <h2 class="text-4xl font-heading font-bold text-primary mb-8 glow-text">Our Story</h2>
-                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-light">
-                    "A vibrant neighborhood bar & grill where great food, cold drinks, and unforgettable karaoke nights
-                    bring people together."
+            <div class="max-w-5xl mx-auto text-center">
+                <span class="section-label justify-center mb-6">
+                    <i class="ph ph-beer-stein"></i>
+                    Our Story
+                </span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-8 glow-text">A Place to Belong
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
+                    "A vibrant neighborhood bar &amp; grill where great food, cold drinks, and unforgettable karaoke
+                    nights bring people together."
                 </p>
-                <div class="mt-12 flex justify-center space-x-8">
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-primary">10+</span>
-                        <span class="text-sm font-medium tracking-wide text-gray-500 uppercase">Years Pouring</span>
+
+                <!-- Stats -->
+                <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-3xl mx-auto">
+                    <div class="stat-item">
+                        <i class="ph ph-calendar text-3xl text-cta mb-2 block"></i>
+                        <span class="block text-3xl font-bold text-primary glow-text">10+</span>
+                        <span class="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase mt-1 block">Years Open</span>
                     </div>
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-primary">500+</span>
-                        <span class="text-sm font-medium tracking-wide text-gray-500 uppercase">Karaoke Stars</span>
+                    <div class="stat-item">
+                        <i class="ph ph-microphone-stage text-3xl text-cta mb-2 block"></i>
+                        <span class="block text-3xl font-bold text-primary glow-text">500+</span>
+                        <span class="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase mt-1 block">Karaoke Stars</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="ph ph-fork-knife text-3xl text-cta mb-2 block"></i>
+                        <span class="block text-3xl font-bold text-primary glow-text">60+</span>
+                        <span class="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase mt-1 block">Menu Items</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="ph ph-star text-3xl text-cta mb-2 block"></i>
+                        <span class="block text-3xl font-bold text-primary glow-text">4.8</span>
+                        <span class="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase mt-1 block">Avg. Rating</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ── Contact Section ────────────────────────────── -->
         <section id="contact" class="py-24 px-6 bg-black/5 dark:bg-white/5 reveal">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-heading font-bold text-primary mb-4 glow-text">Visit Us</h2>
-                    <div class="w-24 h-1 bg-cta mx-auto rounded-full"></div>
+                    <span class="section-label justify-center">
+                        <i class="ph ph-map-pin"></i>
+                        Come See Us
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary glow-text">Visit Us</h2>
+                    <div class="accent-line"></div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <!-- Info & Form -->
-                    <div class="space-y-8">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="glass-card p-6 flex flex-col items-center text-center">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <!-- Location -->
+                            <div class="glass-card p-6 flex flex-col items-center text-center hover-lift">
                                 <div
                                     class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
                                     <i class="ph-fill ph-map-pin text-2xl"></i>
                                 </div>
-                                <h4 class="font-bold text-lg mb-2">Location</h4>
-                                <p class="text-gray-600 dark:text-gray-400">123 Cincinnati Blvd<br>Downtown District, NY
-                                    10001</p>
+                                <h4 class="font-bold text-lg mb-1">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">123 Cincinnati Blvd<br>Downtown District, NY 10001</p>
                             </div>
-
-                            <div class="glass-card p-6 flex flex-col items-center text-center">
+                            <!-- Contact -->
+                            <div class="glass-card p-6 flex flex-col items-center text-center hover-lift">
                                 <div
                                     class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
                                     <i class="ph-fill ph-phone text-2xl"></i>
                                 </div>
-                                <h4 class="font-bold text-lg mb-2">Contact</h4>
-                                <p class="text-gray-600 dark:text-gray-400">(555) 123-4567<br>hello@cincinnatibar.com
+                                <h4 class="font-bold text-lg mb-1">Contact</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">(555) 123-4567<br>hello@cincinnatibar.com</p>
+                            </div>
+                            <!-- Hours -->
+                            <div class="glass-card p-6 flex flex-col items-center text-center hover-lift sm:col-span-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-cta/10 flex items-center justify-center mb-4 text-cta">
+                                    <i class="ph-fill ph-clock text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Hours</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    Mon – Thu: 4PM – 12AM &nbsp;·&nbsp; Fri – Sat: 4PM – 2AM &nbsp;·&nbsp; Sun: 2PM – 10PM
                                 </p>
                             </div>
                         </div>
 
+                        <!-- Reservation Form -->
                         <div class="glass-card p-8">
                             <h3 class="text-2xl font-heading font-bold mb-6">Reserve a Table</h3>
-                            <form id="reservation-form" class="space-y-4">
+                            <form id="reservation-form" class="space-y-4" novalidate>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label for="name" class="block text-sm font-medium mb-1">Name</label>
-                                        <input type="text" id="name" required
-                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700">
+                                        <label for="name" class="block text-sm font-semibold mb-1.5">Full Name</label>
+                                        <input type="text" id="name" name="name" required placeholder="Jane Smith"
+                                            class="input border-gray-300 dark:border-gray-700">
                                     </div>
                                     <div>
-                                        <label for="phone" class="block text-sm font-medium mb-1">Phone</label>
-                                        <input type="tel" id="phone" required
-                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700">
+                                        <label for="phone" class="block text-sm font-semibold mb-1.5">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" required placeholder="(555) 000-0000"
+                                            class="input border-gray-300 dark:border-gray-700">
                                     </div>
                                     <div>
-                                        <label for="date" class="block text-sm font-medium mb-1">Date</label>
-                                        <input type="date" id="date" required
-                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700 [color-scheme:light] dark:[color-scheme:dark]">
+                                        <label for="date" class="block text-sm font-semibold mb-1.5">Date</label>
+                                        <input type="date" id="date" name="date" required
+                                            class="input border-gray-300 dark:border-gray-700 [color-scheme:light] dark:[color-scheme:dark]">
                                     </div>
                                     <div>
-                                        <label for="guests" class="block text-sm font-medium mb-1">Guests</label>
-                                        <select id="guests"
-                                            class="w-full input bg-transparent border-gray-300 dark:border-gray-700 dark:bg-charcoal">
+                                        <label for="guests" class="block text-sm font-semibold mb-1.5">Party Size</label>
+                                        <select id="guests" name="guests"
+                                            class="input border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a]">
                                             <option value="1">1 Person</option>
                                             <option value="2" selected>2 People</option>
                                             <option value="3">3 People</option>
@@ -388,81 +476,101 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="message" class="block text-sm font-medium mb-1">Special Requests</label>
-                                    <textarea id="message" rows="3"
-                                        class="w-full input bg-transparent border-gray-300 dark:border-gray-700"></textarea>
+                                    <label for="message" class="block text-sm font-semibold mb-1.5">Special Requests
+                                        <span class="text-gray-400 font-normal">(optional)</span></label>
+                                    <textarea id="message" name="message" rows="3" placeholder="Any dietary restrictions, occasion, seating preference…"
+                                        class="input border-gray-300 dark:border-gray-700"></textarea>
                                 </div>
-                                <button type="submit" class="w-full btn-primary mt-4">Book Reservation</button>
+                                <button type="submit" class="btn-primary w-full mt-2 py-4 text-base">
+                                    <i class="ph ph-check-circle text-xl"></i>
+                                    Book My Reservation
+                                </button>
                             </form>
                         </div>
                     </div>
 
-                    <!-- Embedded Map (Placeholder) -->
-                    <div class="h-full min-h-[400px] rounded-2xl overflow-hidden glass-card glass-border p-2">
+                    <!-- Map -->
+                    <div class="h-full min-h-[450px] rounded-2xl overflow-hidden glass-card p-2">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.2528000654!2d-74.14448744005233!3d40.697631233324634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1709140000000!5m2!1sen!2sus"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            class="rounded-xl filter dark:invert dark:hue-rotate-180 dark:contrast-75"></iframe>
+                            title="Cincinnati Bar & Grill map location"
+                            class="rounded-xl w-full h-full min-h-[430px] filter dark:invert dark:hue-rotate-180 dark:contrast-75"></iframe>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ── Footer ─────────────────────────────────────────── -->
     <footer class="bg-black text-white pt-16 pb-8 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <h3 class="text-2xl font-heading font-bold text-primary tracking-wider glow-text mb-6">Cincinnati
-                        Bar
-                        & Grill</h3>
-                    <p class="text-gray-400 max-w-sm">Every night is a good night when there's great food, cold drinks,
-                        and a microphone.</p>
+                    <h3 class="text-2xl font-heading font-bold text-primary tracking-wider glow-text mb-4">Cincinnati
+                        Bar &amp; Grill</h3>
+                    <p class="text-gray-400 max-w-sm leading-relaxed">Every night is a good night when there's great food,
+                        cold drinks, and a microphone.</p>
+                    <div class="flex space-x-3 mt-6">
+                        <a href="#" aria-label="Follow on Instagram"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors cursor-pointer">
+                            <i class="ph-fill ph-instagram-logo text-lg"></i>
+                        </a>
+                        <a href="#" aria-label="Follow on Facebook"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors cursor-pointer">
+                            <i class="ph-fill ph-facebook-logo text-lg"></i>
+                        </a>
+                        <a href="#" aria-label="Follow on TikTok"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors cursor-pointer">
+                            <i class="ph-fill ph-tiktok-logo text-lg"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <h4 class="font-bold text-lg mb-5">Quick Links</h4>
                     <ul class="space-y-3 font-medium text-gray-400">
-                        <li><a href="#menu" class="hover:text-cta transition-colors">Menu</a></li>
-                        <li><a href="#events" class="hover:text-cta transition-colors">Events</a></li>
-                        <li><a href="#about" class="hover:text-cta transition-colors">Our Story</a></li>
-                        <li><a href="#contact" class="hover:text-cta transition-colors">Contact</a></li>
+                        <li><a href="#menu" class="hover:text-cta transition-colors flex items-center gap-2">
+                            <i class="ph ph-arrow-right text-sm text-cta/60"></i> Menu</a></li>
+                        <li><a href="#events" class="hover:text-cta transition-colors flex items-center gap-2">
+                            <i class="ph ph-arrow-right text-sm text-cta/60"></i> Events</a></li>
+                        <li><a href="#about" class="hover:text-cta transition-colors flex items-center gap-2">
+                            <i class="ph ph-arrow-right text-sm text-cta/60"></i> Our Story</a></li>
+                        <li><a href="#gallery" class="hover:text-cta transition-colors flex items-center gap-2">
+                            <i class="ph ph-arrow-right text-sm text-cta/60"></i> Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-cta transition-colors flex items-center gap-2">
+                            <i class="ph ph-arrow-right text-sm text-cta/60"></i> Reserve</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-lg mb-6">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
-                            aria-label="Instagram">
-                            <i class="ph-fill ph-instagram-logo text-xl"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
-                            aria-label="Facebook">
-                            <i class="ph-fill ph-facebook-logo text-xl"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cta hover:text-black transition-colors"
-                            aria-label="TikTok">
-                            <i class="ph-fill ph-tiktok-logo text-xl"></i>
-                        </a>
+                    <h4 class="font-bold text-lg mb-5">Opening Hours</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <div class="flex justify-between">
+                            <span>Mon – Thu</span>
+                            <span class="text-white/80">4PM – 12AM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Fri – Sat</span>
+                            <span class="text-cta font-semibold">4PM – 2AM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sunday</span>
+                            <span class="text-white/80">2PM – 10PM</span>
+                        </div>
                     </div>
-
-                    <div class="mt-8">
-                        <h4 class="font-bold text-sm text-gray-400 mb-2 uppercase tracking-wider">Opening Hours</h4>
-                        <p class="text-gray-400">Mon - Thu: 4PM - 12AM<br>Fri - Sat: 4PM - 2AM<br>Sun: 2PM - 10PM</p>
-                    </div>
+                    <a href="#contact" class="btn-primary mt-6 text-sm px-6 py-3 inline-flex">
+                        Make a Reservation
+                        <i class="ph ph-arrow-up-right text-base"></i>
+                    </a>
                 </div>
             </div>
 
             <div
-                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; 2026 Cincinnati Bar & Grill. All rights reserved. Made by braze,inc 2026</p>
-                <div class="mt-4 md:mt-0 space-x-4">
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-3">
+                <p>&copy; 2026 Cincinnati Bar &amp; Grill. All rights reserved. Made by braze,inc 2026</p>
+                <div class="space-x-5">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
                 </div>
@@ -470,10 +578,16 @@
         </div>
     </footer>
 
+    <!-- Toast Notification -->
+    <div id="toast" role="alert" aria-live="polite">
+        <i class="ph ph-check-circle text-cta text-lg"></i>
+        <span id="toast-message">Your reservation has been received!</span>
+    </div>
+
     <!-- Custom Mouse Cursor Effect -->
     <div id="custom-cursor"
-        class="fixed top-0 left-0 w-3 h-3 bg-cta dark:bg-primary rounded-full pointer-events-none z-[9999] opacity-0 transition-[transform,opacity] duration-150 ease-out shadow-neon hidden md:block"
-        style="transform: translate(-50%, -50%);"></div>
+        class="fixed top-0 left-0 w-3 h-3 bg-cta rounded-full pointer-events-none z-[9999] opacity-0 shadow-neon hidden md:block"
+        style="transform: translate(-50%, -50%);" aria-hidden="true"></div>
 
     <script src="script.js"></script>
 </body>
